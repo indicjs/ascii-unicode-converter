@@ -7,10 +7,11 @@
   "author": "Akshay S Dinesh <asdofindia@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "postinstall": "node node_modules/jspm/cli.js install",
     "run-server": "npm run build:vendor && node_modules/http-server/bin/http-server --cors -p 9000",
-    "build:vendor" : "cp node_modules/siimple/dist/*.min.css  dist/assets/ && cp node_modules/siimple-colors/dist/*.min.css dist/assets/",
+    "build:vendor": "cp node_modules/siimple/dist/*.min.css  dist/assets/ && cp node_modules/siimple-colors/dist/*.min.css dist/assets/",
     "build:css": "cp -R src/assets/ dist/",
-    "build:js": "jspm bundle src/js/ascii-unicode-converter.js dist/bundle.js --skip-source-maps",
+    "build:js": "node node_modules/jspm/cli.js bundle src/js/ascii-unicode-converter.js dist/bundle.js --skip-source-maps",
     "watch:js": "watch 'npm run build:js' src/js/",
     "watch:css": "watch 'npm run build:css' src/assets/",
     "build": "npm run build:vendor && npm run build:css && npm run build:js",
@@ -32,7 +33,7 @@
     "dependencies": {
       "indicjs/ekarupa": "github:indicjs/ekarupa@master",
       "indicjs/unicode-conversion-maps": "github:indicjs/unicode-conversion-maps@master",
-      "vue": "npm:vue@^2.1.10"
+      "vue": "npm:vue@^2.2.1"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17"
